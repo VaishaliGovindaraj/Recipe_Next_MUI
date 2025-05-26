@@ -1,17 +1,14 @@
 // ✅ DO NOT add 'use client'
-interface ProductPageProps {
-  params: {
-    product_name: string;
-  };
-}
+type Params = Promise<{ product_name: string }>;
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const { product_name } = params;
+export default async function Page({ params }: { params: Params }) {
+const {product_name} = await params;
+
 
   return (
-    <>
-      <p>Product Name:</p>
+    <div>
+      <h1>Product</h1>
       <p>{product_name}</p>
-    </>
+    </div>
   );
 }
