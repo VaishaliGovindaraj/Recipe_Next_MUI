@@ -1,20 +1,17 @@
-
-interface productNameProp  {
-    params:{
-        product_name : string
-    }
+// ✅ DO NOT add 'use client'
+interface ProductPageProps {
+  params: {
+    product_name: string;
+  };
 }
 
+export default function ProductPage({ params }: ProductPageProps) {
+  const { product_name } = params;
 
-const productName = ({params}:productNameProp) => {
-    const product_name = params;
-
-    return(
-        <>
-        <p>Product Name </p>
-        {product_name}
-        </>
-    )
+  return (
+    <>
+      <p>Product Name:</p>
+      <p>{product_name}</p>
+    </>
+  );
 }
-
-export default productName;
