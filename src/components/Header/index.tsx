@@ -13,9 +13,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ImageListItem } from '@mui/material';
+import { ImageListItem, Paper } from '@mui/material';
+import Link from 'next/link';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home','recipe'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -38,11 +39,10 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" color="transparent" sx={{display: "flex",flexDirection:"row", alignItems: "center", justifyContent:"space-evenly", width: "100%",maxWidth:"100% !important"}}>
+    
+    <AppBar position="static" color="transparent" sx={{backgroundColor:"#F0FAF0",display: "flex",flexDirection:"row", alignItems: "center", justifyContent:"space-evenly", width: "100%",maxWidth:"100% !important"}}>
       {/* <Container maxWidth="xl" sx={{width:"100%", maxWidth:"100% !important"}}> */}
-        {/* <Toolbar disableGutters sx={{padding: "0 55px"}}> */}
-            
-      
+        <Toolbar disableGutters sx={{padding: "0 55px"}}>
         <ImageListItem>
           <img
             src='/logo.png'
@@ -51,10 +51,6 @@ function ResponsiveAppBar() {
             style={{width:"150px", height:"120px",objectFit:"contain"}}
           />
         </ImageListItem>
-   
-   
-
-
           <Typography
             variant="h6"
             noWrap
@@ -71,7 +67,6 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            
           </Typography>
 
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -103,7 +98,7 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center', color: "black"}}>{page}</Typography>
+                  <Typography sx={{ textAlign: 'center', color: "black"}}><Link href={`/${page}`}>{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -134,10 +129,13 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
-                {page}
+                { page === "Home"
+                 ? <Link href={`/`}>{page}</Link> 
+                 : <Link href={`/${page}`}>{page}</Link>}
               </Button>
             ))}
           </Box>
+{/* 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -166,10 +164,10 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-        {/* </Toolbar> */}
+          </Box> */}
+        </Toolbar>
       {/* </Container> */}
-    </AppBar>
+          </AppBar>
   );
 }
 export default ResponsiveAppBar;
