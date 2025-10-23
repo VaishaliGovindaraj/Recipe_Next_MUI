@@ -98,19 +98,18 @@ const Recipe = () => {
                 }}
               >
                 <CardContent>
-                  <Link href={`/${item.id}`}>
+                  <div>
                     <Typography
                       variant="h6"
                       component="a"
                       sx={{
                         color: "white",
-                        textDecoration: "none",
-                        "&:hover": { textDecoration: "underline" },
+                        textDecoration: "none"
                       }}
                     >
                       {item.name}
                     </Typography>
-                  </Link>
+                  </div>
                 </CardContent>
 
                 <CardMedia
